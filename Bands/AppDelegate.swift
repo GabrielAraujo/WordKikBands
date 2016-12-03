@@ -16,6 +16,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        Timer.scheduledTimer(withTimeInterval: 10, repeats: true, block: {
+            timer in
+            var newImage = UIImage()
+            
+            let randomRow = Int(arc4random_uniform(UInt32(bgImages.count)))
+            newImage = bgImages[randomRow]!
+            while newImage == currentBgImage {
+                let randomRow = Int(arc4random_uniform(UInt32(bgImages.count)))
+                newImage = bgImages[randomRow]!
+            }
+            
+            currentBgImage = newImage
+            
+            NC.post(name: Notification.Name(rawValue: kChangeBgImage), object: nil)
+        })
+        
         return true
     }
 
@@ -40,7 +57,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-
 
 }
 
