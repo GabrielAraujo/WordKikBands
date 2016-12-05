@@ -19,18 +19,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         Timer.scheduledTimer(withTimeInterval: 10, repeats: true, block: {
             timer in
-            var newImage = UIImage()
-            
-            let randomRow = Int(arc4random_uniform(UInt32(bgImages.count)))
-            newImage = bgImages[randomRow]!
-            while newImage == currentBgImage {
+            if bgImages.count > 0 {
+                var newImage = UIImage()
+                
                 let randomRow = Int(arc4random_uniform(UInt32(bgImages.count)))
-                newImage = bgImages[randomRow]!
+                newImage = bgImages[randomRow]
+                if currentBgImage != nil {
+                    while newImage == currentBgImage {
+                        let randomRow = Int(arc4random_uniform(UInt32(bgImages.count)))
+                        newImage = bgImages[randomRow]
+                    }
+                }
+                
+                currentBgImage = newImage
+                
+                NC.post(name: Notification.Name(rawValue: kChangeBgImage), object: nil)
             }
-            
-            currentBgImage = newImage
-            
-            NC.post(name: Notification.Name(rawValue: kChangeBgImage), object: nil)
         })
         
         return true

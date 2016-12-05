@@ -17,18 +17,10 @@ let UD = UserDefaults.standard
 
 let NC = NotificationCenter.default
 
-let bgImages = [
-    UIImage(named: "betwburriedandme"),
-    UIImage(named: "cob"),
-    UIImage(named: "death"),
-    UIImage(named: "entombed"),
-    UIImage(named: "greeday"),
-    UIImage(named: "hypocrisi"),
-    UIImage(named: "inflames"),
-    UIImage(named: "linkin-park"),
-]
+var bgImages:[UIImage] = []
+var bgImagesId:[Int] = []
 
-var currentBgImage = bgImages[Int(arc4random_uniform(UInt32(bgImages.count)))]
+var currentBgImage:UIImage!
 
 let kChangeBgImage = "kChangeBgImage"
 

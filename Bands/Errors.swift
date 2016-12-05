@@ -11,4 +11,8 @@ import Foundation
 enum Errors : Error {
     case invalidJsonFormat
     case invalidJsonLocation
+    case noJsonResponse
+    case couldNotInitializeBand
+    case noObjInLocalDb
+    
 }

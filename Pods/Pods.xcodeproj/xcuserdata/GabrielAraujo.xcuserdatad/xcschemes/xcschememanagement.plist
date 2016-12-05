@@ -24,7 +24,32 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Kingfisher.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-Bands.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Realm.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>RealmSwift.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>SwiftSpinner.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>SwiftyJSON.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -37,12 +62,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>5172ACAB7FEA22813859DC97CA0AA16F</key>
+		<key>1DE93A359FA21F91DFBE81309E851A4A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>65DABCA37D8D4EDFCD34C1647EFF68F0</key>
+		<key>43427974937F1B3E1E0D9B287F80CB3B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>5172ACAB7FEA22813859DC97CA0AA16F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -52,7 +82,27 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>92886A95E7DBD65A3FD4421C89F5753D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>B07B012AE17952EE777271E277F90284</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>CA0D0D72BB449BBC7E13E9D123EDF2BC</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>CF1770F7E0427811CD22C29E91C22A1F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E31F2076240CA91E122AC5F6054F166B</key>
 		<dict>
 			<key>primary</key>
 			<true/>

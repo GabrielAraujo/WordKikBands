@@ -8,10 +8,26 @@
 
 import Foundation
 import Gloss
+import RealmSwift
+import Realm
 
 class Band : Decodable {
     var id:Int?
     var name:String?
+    
+    //Downloadable Data
+    var genre:String?
+    var imageUrl:String?
+    var country:String?
+    var countryFlagUrl:String?
+    var website:String?
+    
+    //Flag
+    var fetched:Bool?
+    
+    init() {
+        
+    }
     
     init(id:Int, name:String) {
         self.id = id
@@ -19,7 +35,12 @@ class Band : Decodable {
     }
     
     required init?(json: JSON) {
-        
+        self.genre = "genre" <~~ json
+        self.name = "name" <~~ json
+        self.imageUrl = "image" <~~ json
+        self.country = "country" <~~ json
+        self.countryFlagUrl = "country_flag" <~~ json
+        self.website = "website" <~~ json
     }
     
     class func getFromFile(completion: @escaping (Result<[Band]>) -> Void){
