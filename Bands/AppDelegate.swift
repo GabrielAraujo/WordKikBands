@@ -25,7 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 let randomRow = Int(arc4random_uniform(UInt32(bgImages.count)))
                 newImage = bgImages[randomRow]
                 if currentBgImage != nil {
-                    while newImage == currentBgImage {
+                    while newImage == currentBgImage && bgImages.count > 1 {
                         let randomRow = Int(arc4random_uniform(UInt32(bgImages.count)))
                         newImage = bgImages[randomRow]
                     }

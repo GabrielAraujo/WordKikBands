@@ -27,16 +27,60 @@ class BandDB: Object {
         return "id"
     }
     
+    class func save(_ band:Band, completion: (Result<Band>) -> Void){
+        do {
+            let realm = try Realm()
+            let objF = realm.objects(BandDB.self).filter("id == %@", band.id!).first
+            if let objDb = objF {
+                try realm.write {
+                    objDb.updateValues(band)
+                    realm.add(objDb, update: true)
+                }
+                completion(.success(BandDB.dbToObj(objDb)))
+            }else{
+                let objDb = BandDB()
+                try realm.write {
+                    objDb.updateValues(band)
+                    realm.add(objDb)
+                }
+                completion(.success(BandDB.dbToObj(objDb)))
+            }
+            NC.post(name: Notification.Name(rawValue: kAddedBand), object: nil)
+        } catch let error as NSError {
+            completion(.failure(error))
+        }
+    }
+    
     class func get(_ id: Int, completion: (Result<Band>) -> Void) {
         do {
             let realm = try Realm()
-            let lang = realm.objects(BandDB.self).filter("id == %@", id).first
-            if let lan = lang {
-                completion(.success(BandDB.dbToObj(lan)))
+            let band = realm.objects(BandDB.self).filter("id == %@", id).first
+            if let ban = band {
+                completion(.success(BandDB.dbToObj(ban)))
             }else{
                 //TODO Raise Error of invalid
                 completion(.failure(Errors.noObjInLocalDb))
             }
+        } catch let error {
+            completion(.failure(error))
+        }
+    }
+    
+    class func get(_ completion: (Result<[Band]>) -> Void) {
+        do {
+            let realm = try Realm()
+            let bands = realm.objects(BandDB.self)
+            completion(.success(bands.map({ BandDB.dbToObj($0) })))
+        } catch let error {
+            completion(.failure(error))
+        }
+    }
+    
+    class func getFetched(_ completion: (Result<[Band]>) -> Void) {
+        do {
+            let realm = try Realm()
+            let bands = realm.objects(BandDB.self).filter("fetched == true")
+            completion(.success(bands.map({ BandDB.dbToObj($0) })))
         } catch let error {
             completion(.failure(error))
         }
@@ -54,6 +98,20 @@ class BandDB: Object {
         obj.fetched = db.fetched.value
         
         return obj
+    }
+    
+    class func objToDb(_ obj:Band) -> BandDB {
+        let db = BandDB()
+        db.id.value = obj.id
+        db.name = obj.name
+        db.genre = obj.genre
+        db.imageUrl = obj.imageUrl
+        db.country = obj.country
+        db.countryFlagUrl = obj.countryFlagUrl
+        db.website = obj.website
+        db.fetched.value = obj.fetched
+        
+        return db
     }
     
     fileprivate func updateValues(_ current:Band){

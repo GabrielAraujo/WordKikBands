@@ -24,3 +24,5 @@ var currentBgImage:UIImage!
 
 let kChangeBgImage = "kChangeBgImage"
 
+let kAddedBand = "kAddedBand"
+

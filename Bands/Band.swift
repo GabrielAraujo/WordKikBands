@@ -74,4 +74,99 @@ class Band : Decodable {
             completion(.failure(e))
         }
     }
+    
+    class func get(_ id: Int, completion: @escaping (Result<Band>) -> Void){
+        BandDB.get(id, completion: {
+            result in
+            switch result {
+            case .success(let band):
+                completion(.success(band))
+                break
+            case .failure(let error):
+                if error == Errors.noObjInLocalDb {
+                    BandService().get(id, completion: {
+                        result in
+                        switch result {
+                        case .success(let band):
+                            band.fetched = true
+                            band.save({
+                                result in
+                                switch result {
+                                case .success( _):
+                                    completion(.success(band))
+                                    break
+                                case .failure(let error):
+                                    completion(.failure(error))
+                                    break
+                                }
+                            })
+                            break
+                        case .failure(let error):
+                            completion(.failure(error))
+                            break
+                        }
+                    })
+                }else{
+                    completion(.failure(error))
+                }
+                break
+            }
+        })
+    }
+    
+    class func getAll(_ completion: @escaping (Result<[Band]>) -> Void){
+        BandDB.get(completion)
+    }
+    
+    class func fetchAll() {
+        Band.getFromFile(completion: {
+            result in
+            switch result {
+            case .success(let fileBands):
+                BandDB.getFetched({
+                    result in
+                    switch result {
+                    case .success(let fetchedBands):
+                        let filteredIds = fileBands.map({ $0.id! }).filter({ !fetchedBands.map({ $0.id! }).contains($0) })
+                        filteredIds.forEach({
+                            obj in
+                            Band.get(obj, completion: {
+                                result in
+                                switch result {
+                                case .success(let band):
+                                    print("Fetched band \(band.id) \(band.name)")
+                                    break
+                                case .failure(let error):
+                                    print("Could not fetch one band: \(error)")
+                                    break
+                                }
+                            })
+                        })
+                        break
+                    case .failure(let error):
+                        print("Could not get fetched bands: \(error)")
+                        break
+                    }
+                })
+                break
+            case .failure(let error):
+                print("Could not get bands from file: \(error)")
+                break
+            }
+        })
+    }
+    
+    func save(_ completion: @escaping (Result<Bool>) -> Void){
+        BandDB.save(self, completion: {
+            result in
+            switch result {
+            case .success( _):
+                completion(.success(true))
+                break
+            case .failure(let error):
+                completion(.failure(error))
+                break
+            }
+        })
+    }
 }

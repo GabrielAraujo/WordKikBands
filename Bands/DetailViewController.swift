@@ -81,6 +81,13 @@ class DetailViewController: UIViewController {
                 }
             })
         }
+        if let _ = self.receivingBand.website {
+            self.btnWebsite.isEnabled = true
+            self.btnWebsite.isHidden = false
+        }else{
+            self.btnWebsite.isEnabled = false
+            self.btnWebsite.isHidden = true
+        }
     }
     
     @IBAction func backButtonTapped(_ sender: UIButton) {
@@ -88,6 +95,17 @@ class DetailViewController: UIViewController {
     }
     
     @IBAction func btnWebsiteTapped(_ sender: UIButton) {
+        if let website = self.receivingBand.website {
+            if website.contains("http://") || website.contains("https://") {
+                if let url = URL(string: website) {
+                    UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                }
+            }else{
+                if let url = URL(string: "http://" + website) {
+                    UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                }
+            }
+        }
     }
     
 

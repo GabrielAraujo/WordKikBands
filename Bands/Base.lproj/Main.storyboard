@@ -38,6 +38,9 @@
                                                 <constraint firstAttribute="height" constant="40" id="urf-D6-XgT"/>
                                             </constraints>
                                             <state key="normal" image="Graph-1"/>
+                                            <connections>
+                                                <action selector="btnGraphTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="P55-5I-pIc"/>
+                                            </connections>
                                         </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bands" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Ef-Ep-Box">
                                             <rect key="frame" x="56" y="17" width="208" height="40"/>
@@ -151,11 +154,105 @@
                         <outlet property="tableView" destination="Qr5-uH-1Rl" id="eoy-Dx-EJv"/>
                         <outlet property="topBar" destination="j2V-pz-gpQ" id="fVB-jX-XhH"/>
                         <segue destination="Bdk-jK-sG0" kind="show" identifier="HomeToDetail" id="3us-VA-RJO"/>
+                        <segue destination="RLB-O2-tOP" kind="show" identifier="HomeToChart" id="HDb-IL-Iet"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1132.5" y="136.25"/>
+        </scene>
+        <!--Chart View Controller-->
+        <scene sceneID="A6B-wC-A68">
+            <objects>
+                <viewController storyboardIdentifier="ChartVC" id="RLB-O2-tOP" customClass="ChartViewController" customModule="Bands" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="5mh-NV-RT8"/>
+                        <viewControllerLayoutGuide type="bottom" id="ubq-b2-2wI"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="un3-Kw-bFQ">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="c5z-1q-GIR">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                            </imageView>
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ibA-Hs-A7S">
+                                <rect key="frame" x="16" y="28" width="288" height="404"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="kK8-o6-1nf">
+                                    <rect key="frame" x="0.0" y="0.0" width="288" height="404"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EOt-ZI-nuD">
+                                            <rect key="frame" x="8" y="366" width="272" height="30"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="30" id="rrz-Gs-I51"/>
+                                            </constraints>
+                                            <state key="normal" image="download"/>
+                                            <connections>
+                                                <action selector="btnFetchTapped:" destination="RLB-O2-tOP" eventType="touchUpInside" id="56H-0W-krd"/>
+                                            </connections>
+                                        </button>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UBW-8r-gM7" customClass="PieChartView" customModule="Charts">
+                                            <rect key="frame" x="8" y="8" width="272" height="350"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="UBW-8r-gM7" firstAttribute="leading" secondItem="kK8-o6-1nf" secondAttribute="leading" constant="8" id="ASA-kN-IRk"/>
+                                        <constraint firstAttribute="bottom" secondItem="EOt-ZI-nuD" secondAttribute="bottom" constant="8" id="NLI-L8-rB8"/>
+                                        <constraint firstItem="EOt-ZI-nuD" firstAttribute="leading" secondItem="kK8-o6-1nf" secondAttribute="leading" constant="8" id="TMp-FA-K06"/>
+                                        <constraint firstItem="UBW-8r-gM7" firstAttribute="top" secondItem="kK8-o6-1nf" secondAttribute="top" constant="8" id="WGo-YW-8pk"/>
+                                        <constraint firstAttribute="trailing" secondItem="UBW-8r-gM7" secondAttribute="trailing" constant="8" id="dKp-Fg-PHz"/>
+                                        <constraint firstItem="EOt-ZI-nuD" firstAttribute="top" secondItem="UBW-8r-gM7" secondAttribute="bottom" constant="8" id="dnk-Ja-XUd"/>
+                                        <constraint firstAttribute="trailing" secondItem="EOt-ZI-nuD" secondAttribute="trailing" constant="8" id="n8o-hj-WQI"/>
+                                    </constraints>
+                                </view>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="404" id="Yjh-Hc-tUa"/>
+                                </constraints>
+                                <blurEffect style="light"/>
+                            </visualEffectView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eJq-Dx-l0Y">
+                                <rect key="frame" x="0.0" y="440" width="320" height="40"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="OBP-r9-yXS"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="20"/>
+                                <state key="normal" title="Back">
+                                    <color key="titleColor" red="0.20392156859999999" green="0.28627450980000002" blue="0.36862745099999999" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="btnReturnTapped:" destination="RLB-O2-tOP" eventType="touchUpInside" id="vTZ-Jt-f4S"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.20392156859999999" green="0.28627450980000002" blue="0.36862745099999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="eJq-Dx-l0Y" secondAttribute="trailing" id="0bG-Uw-qwJ"/>
+                            <constraint firstItem="ubq-b2-2wI" firstAttribute="top" secondItem="c5z-1q-GIR" secondAttribute="bottom" id="6H9-Yq-sEu"/>
+                            <constraint firstItem="eJq-Dx-l0Y" firstAttribute="leading" secondItem="un3-Kw-bFQ" secondAttribute="leading" id="7U4-k9-DEV"/>
+                            <constraint firstItem="c5z-1q-GIR" firstAttribute="top" secondItem="un3-Kw-bFQ" secondAttribute="top" id="ElJ-9R-2i4"/>
+                            <constraint firstItem="eJq-Dx-l0Y" firstAttribute="top" relation="greaterThanOrEqual" secondItem="ibA-Hs-A7S" secondAttribute="bottom" constant="8" id="HDg-8c-wzq"/>
+                            <constraint firstItem="c5z-1q-GIR" firstAttribute="leading" secondItem="un3-Kw-bFQ" secondAttribute="leading" id="JU9-4g-QNc"/>
+                            <constraint firstAttribute="trailing" secondItem="c5z-1q-GIR" secondAttribute="trailing" id="XIt-Jm-dB8"/>
+                            <constraint firstItem="ubq-b2-2wI" firstAttribute="top" secondItem="eJq-Dx-l0Y" secondAttribute="bottom" id="Y33-oD-AK3"/>
+                            <constraint firstItem="ibA-Hs-A7S" firstAttribute="trailing" secondItem="un3-Kw-bFQ" secondAttribute="trailingMargin" id="fTh-mj-9aX"/>
+                            <constraint firstItem="ibA-Hs-A7S" firstAttribute="leading" secondItem="un3-Kw-bFQ" secondAttribute="leadingMargin" id="lT2-4x-qof"/>
+                            <constraint firstItem="ibA-Hs-A7S" firstAttribute="top" secondItem="5mh-NV-RT8" secondAttribute="bottom" constant="8" id="q2q-od-Tae"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="btnFetch" destination="EOt-ZI-nuD" id="M8f-s2-mRX"/>
+                        <outlet property="btnReturn" destination="eJq-Dx-l0Y" id="LWw-FD-sfW"/>
+                        <outlet property="imgViewBg" destination="c5z-1q-GIR" id="7vH-0o-buM"/>
+                        <outlet property="pieChart" destination="UBW-8r-gM7" id="DMV-hv-sA5"/>
+                        <outlet property="viewContainer" destination="ibA-Hs-A7S" id="scE-wJ-3YU"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pkZ-oa-a8Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1132.5" y="932.5"/>
         </scene>
         <!--Detail View Controller-->
         <scene sceneID="ObD-Jv-hVa">
@@ -274,6 +371,7 @@
     <resources>
         <image name="Graph-1" width="34" height="34"/>
         <image name="back" width="24" height="38"/>
+        <image name="download" width="42" height="56"/>
         <image name="link" width="50" height="50"/>
     </resources>
 </document>

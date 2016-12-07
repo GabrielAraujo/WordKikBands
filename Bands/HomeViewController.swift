@@ -65,10 +65,17 @@ class HomeViewController: UIViewController {
         }
     }
     
+    @IBAction func btnGraphTapped(_ sender: UIButton) {
+        self.performSegue(withIdentifier: "HomeToChart", sender: nil)
+    }
+    
+    
     func changeBgImage(_ notification: Notification){
         UIView.transition(with: self.imgViewBg, duration:2, options: .transitionCrossDissolve, animations: {
             self.imgViewBg.image = currentBgImage
-        },completion: nil)
+        },completion: {
+            completed in
+        })
     }
 
 }
@@ -97,7 +104,7 @@ extension HomeViewController : UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let selectedBand = self.bands[indexPath.row]
         SwiftSpinner.show("Downloading Band \(selectedBand.name!)...")
-        BandService().get(selectedBand.id!, completion: {
+        Band.get(selectedBand.id!, completion: {
             result in
             switch result {
             case .success(let band):

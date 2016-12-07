@@ -24,6 +24,8 @@
 		E5A4250E1DF4D3000055CA71 /* BandDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A4250D1DF4D3000055CA71 /* BandDB.swift */; };
 		E5A425111DF5050D0055CA71 /* BandDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A425101DF5050D0055CA71 /* BandDTO.swift */; };
 		E5A425131DF52A0C0055CA71 /* CustomSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A425121DF52A0C0055CA71 /* CustomSegue.swift */; };
+		E5A425151DF76D030055CA71 /* ChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A425141DF76D030055CA71 /* ChartViewController.swift */; };
+		E5A425181DF7A8EC0055CA71 /* IntegerValueFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A425171DF7A8EC0055CA71 /* IntegerValueFormatter.swift */; };
 		F171B49C149A110253ADC7E7 /* Pods_Bands.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAF08E3547469F37A116A24E /* Pods_Bands.framework */; };
 /* End PBXBuildFile section */
 
@@ -49,6 +51,8 @@
 		E5A4250D1DF4D3000055CA71 /* BandDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BandDB.swift; sourceTree = "<group>"; };
 		E5A425101DF5050D0055CA71 /* BandDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BandDTO.swift; sourceTree = "<group>"; };
 		E5A425121DF52A0C0055CA71 /* CustomSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSegue.swift; sourceTree = "<group>"; };
+		E5A425141DF76D030055CA71 /* ChartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartViewController.swift; sourceTree = "<group>"; };
+		E5A425171DF7A8EC0055CA71 /* IntegerValueFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntegerValueFormatter.swift; sourceTree = "<group>"; };
 		FAF08E3547469F37A116A24E /* Pods_Bands.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Bands.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -119,6 +123,7 @@
 		E5A424EF1DF330180055CA71 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				E5A425161DF7A8DB0055CA71 /* Formatter */,
 				E5A4250F1DF504F90055CA71 /* DTO */,
 				E5A4250C1DF4D2E80055CA71 /* Relm */,
 				E5A424FB1DF34CA70055CA71 /* Band.swift */,
@@ -139,6 +144,7 @@
 			children = (
 				E5A424F61DF34BD00055CA71 /* HomeViewController.swift */,
 				E5A425051DF3CB590055CA71 /* DetailViewController.swift */,
+				E5A425141DF76D030055CA71 /* ChartViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -194,6 +200,14 @@
 				E5A425101DF5050D0055CA71 /* BandDTO.swift */,
 			);
 			name = DTO;
+			sourceTree = "<group>";
+		};
+		E5A425161DF7A8DB0055CA71 /* Formatter */ = {
+			isa = PBXGroup;
+			children = (
+				E5A425171DF7A8EC0055CA71 /* IntegerValueFormatter.swift */,
+			);
+			name = Formatter;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -322,10 +336,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				E5A424FF1DF34D040055CA71 /* Result.swift in Sources */,
+				E5A425151DF76D030055CA71 /* ChartViewController.swift in Sources */,
 				E5A4250E1DF4D3000055CA71 /* BandDB.swift in Sources */,
 				E5A3BA881DF3280900A381E0 /* AppDelegate.swift in Sources */,
 				E5A425091DF48FE00055CA71 /* BandService.swift in Sources */,
 				E5A424F51DF3303D0055CA71 /* Global.swift in Sources */,
+				E5A425181DF7A8EC0055CA71 /* IntegerValueFormatter.swift in Sources */,
 				E5A424FC1DF34CA70055CA71 /* Band.swift in Sources */,
 				E5A424FA1DF34C5C0055CA71 /* BandCell.swift in Sources */,
 				E5A425131DF52A0C0055CA71 /* CustomSegue.swift in Sources */,
@@ -377,6 +393,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -427,6 +444,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -456,6 +474,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 06CC549F8C42991FE3853E2A /* Pods-Bands.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = TFUERAK9UX;
 				INFOPLIST_FILE = Bands/Info.plist;
@@ -463,6 +482,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.wordkik.Bands;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -470,6 +490,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 08CD1D8CD55FC979D8C3EB0E /* Pods-Bands.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = TFUERAK9UX;
 				INFOPLIST_FILE = Bands/Info.plist;
@@ -477,6 +498,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.wordkik.Bands;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
